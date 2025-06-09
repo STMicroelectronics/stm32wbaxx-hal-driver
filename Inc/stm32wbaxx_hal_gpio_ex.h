@@ -118,6 +118,11 @@ extern "C" {
 #define GPIO_AF9_TSC           ((uint8_t)0x09)  /*!< TSC Alternate Function mapping */
 
 /**
+  * @brief   AF 10 selection
+  */
+#define GPIO_AF10_PTA          ((uint8_t)0x0A)  /*!< PTA Alternate Function mapping */
+
+/**
   * @brief   AF 11 selection
   */
 #define GPIO_AF11_RF          ((uint8_t)0x0B)  /*!< RF_ANTSW0 Alternate Function mapping */
@@ -127,6 +132,7 @@ extern "C" {
   */
 #define GPIO_AF12_COMP1        ((uint8_t)0x0C)  /*!< COMP1 Alternate Function mapping */
 #define GPIO_AF12_COMP2        ((uint8_t)0x0C)  /*!< COMP2 Alternate Function mapping */
+#define GPIO_AF12_PTA          ((uint8_t)0x0C)  /*!< PTA Alternate Function mapping   */
 
 /**
   * @brief   AF 13 selection
@@ -403,6 +409,7 @@ extern "C" {
 /**
   * @brief   AF 10 selection
   */
+#define GPIO_AF10_PTA          ((uint8_t)0x0A)  /*!< PTA Alternate Function mapping        */
 #define GPIO_AF10_USB_OTG_HS   ((uint8_t)0x0A)  /*!< USB OTG-HS Alternate Function mapping */
 
 /**
@@ -415,6 +422,7 @@ extern "C" {
   */
 #define GPIO_AF12_COMP1        ((uint8_t)0x0C)  /*!< COMP1 Alternate Function mapping */
 #define GPIO_AF12_COMP2        ((uint8_t)0x0C)  /*!< COMP2 Alternate Function mapping */
+#define GPIO_AF12_PTA          ((uint8_t)0x0C)  /*!< PTA Alternate Function mapping   */
 #define GPIO_AF12_TIM4         ((uint8_t)0x0C)  /*!< TIM4 Alternate Function mapping  */
 
 /**
@@ -511,6 +519,11 @@ extern "C" {
 #define GPIO_AF9_TSC           ((uint8_t)0x09)  /*!< TSC Alternate Function mapping */
 
 /**
+  * @brief   AF 10 selection
+  */
+#define GPIO_AF10_PTA          ((uint8_t)0x0A)  /*!< PTA Alternate Function mapping */
+
+/**
   * @brief   AF 11 selection
   */
 #define GPIO_AF11_RF          ((uint8_t)0x0B)  /*!< RF_ANTSW0 Alternate Function mapping */
@@ -520,6 +533,7 @@ extern "C" {
   */
 #define GPIO_AF12_COMP1        ((uint8_t)0x0C)  /*!< COMP1 Alternate Function mapping */
 #define GPIO_AF12_COMP2        ((uint8_t)0x0C)  /*!< COMP2 Alternate Function mapping */
+#define GPIO_AF12_PTA          ((uint8_t)0x0C)  /*!< PTA Alternate Function mapping   */
 
 /**
   * @brief   AF 13 selection
