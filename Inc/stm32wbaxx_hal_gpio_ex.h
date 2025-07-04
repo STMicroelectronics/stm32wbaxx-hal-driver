@@ -327,7 +327,7 @@ extern "C" {
 
 #endif /* defined(STM32WBA50xx) */
 
-#if defined(STM32WBA62xx) || defined(STM32WBA64xx) || defined(STM32WBA65xx)
+#if defined(STM32WBA62xx) || defined(STM32WBA64xx) || defined(STM32WBA65xx) || defined (STM32WBA6Mxx)
 /**
   * @brief   AF 0 selection
   */
@@ -447,7 +447,7 @@ extern "C" {
 
 #define IS_GPIO_AF(AF)         ((AF) <= (uint8_t)0x0F)
 
-#endif /* defined(STM32WBA62xx) || defined(STM32WBA64xx) || defined(STM32WBA65xx) */
+#endif /* defined(STM32WBA62xx) || defined(STM32WBA64xx) || defined(STM32WBA65xx) || defined (STM32WBA6Mxx) */
 
 #if defined(STM32WBA63xx)
 /**
