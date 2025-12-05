@@ -1008,8 +1008,8 @@ typedef struct
                                 ((PIN) == PWR_WAKEUP_PIN7)         ||\
                                 ((PIN) == PWR_WAKEUP_PIN8))
 #endif /* defined(STM32WBA50xx) */
-#if defined (STM32WBA52xx) || defined (STM32WBA54xx) || defined (STM32WBA55xx)
-#if defined (STM32WBA55xx)
+#if defined (STM32WBA52xx) || defined (STM32WBA54xx) || defined (STM32WBA55xx) || defined (STM32WBA5Mxx)
+#if defined (STM32WBA55xx) || defined (STM32WBA5Mxx)
 #define IS_PWR_WAKEUP_PIN(PIN) (((PIN) == PWR_WAKEUP_PIN1_HIGH_0)  ||\
                                 ((PIN) == PWR_WAKEUP_PIN1_HIGH_1)  ||\
                                 ((PIN) == PWR_WAKEUP_PIN2_HIGH_0)  ||\
@@ -1101,8 +1101,8 @@ typedef struct
                                 ((PIN) == PWR_WAKEUP_PIN6)         ||\
                                 ((PIN) == PWR_WAKEUP_PIN7)         ||\
                                 ((PIN) == PWR_WAKEUP_PIN8))
-#endif /* defined (STM32WBA55xx) */
-#endif /* defined (STM32WBA52xx) || defined (STM32WBA54xx) || defined (STM32WBA55xx) */
+#endif /* defined (STM32WBA55xx) || defined (STM32WBA5Mxx) */
+#endif /* defined (STM32WBA52xx) || defined (STM32WBA54xx) || defined (STM32WBA55xx) || defined (STM32WBA5Mxx) */
 #if defined (STM32WBA62xx) || defined (STM32WBA63xx) || defined (STM32WBA64xx) || defined (STM32WBA65xx) || defined (STM32WBA6Mxx)
 #define IS_PWR_WAKEUP_PIN(PIN) (((PIN) == PWR_WAKEUP_PIN1_HIGH_0)  ||\
                                 ((PIN) == PWR_WAKEUP_PIN1_HIGH_1)  ||\
