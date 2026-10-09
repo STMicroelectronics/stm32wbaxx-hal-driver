@@ -1083,6 +1083,7 @@ uint32_t             HAL_SPI_GetError(const SPI_HandleTypeDef *hspi);
                                                     ((LENGTH) == SPI_CRC_LENGTH_5BIT)     || \
                                                     ((LENGTH) == SPI_CRC_LENGTH_4BIT))
 
+
 /**
   * @brief  CRC Length for limited instance
   */
@@ -1091,6 +1092,8 @@ uint32_t             HAL_SPI_GetError(const SPI_HandleTypeDef *hspi);
 
 
 #define IS_SPI_CRC_POLYNOMIAL(POLYNOMIAL)          ((POLYNOMIAL) > 0x0UL)
+
+#define IS_SPI_CRC_POLYNOMIAL_SIZE(POLYNOM, LENGTH) ((POLYNOM >> ((LENGTH >> SPI_CFG1_CRCSIZE_Pos) + 1UL)) == 0UL)
 
 
 

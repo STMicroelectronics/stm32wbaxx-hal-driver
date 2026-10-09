@@ -240,6 +240,9 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
 {
   uint32_t crc_length;
   uint32_t packet_length;
+#if (USE_SPI_CRC != 0UL)
+  uint32_t crc_poly_msb_mask;
+#endif /* USE_SPI_CRC */
 
   /* Check the SPI handle allocation */
   if (hspi == NULL)
@@ -326,6 +329,9 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
     {
       crc_length = hspi->Init.CRCLength;
     }
+
+    /* Verify the correctness of polynom size */
+    assert_param(IS_SPI_CRC_POLYNOMIAL_SIZE(hspi->Init.CRCPolynomial, crc_length));
 
     /* Verify that the CRC Length is higher than DataSize */
     if ((hspi->Init.DataSize >> SPI_CFG1_DSIZE_Pos) > (crc_length >> SPI_CFG1_CRCSIZE_Pos))
@@ -444,15 +450,21 @@ HAL_StatusTypeDef HAL_SPI_Init(SPI_HandleTypeDef *hspi)
     if (((IS_SPI_LIMITED_INSTANCE(hspi->Instance)) && (crc_length == SPI_CRC_LENGTH_16BIT)) ||
         ((IS_SPI_FULL_INSTANCE(hspi->Instance)) && (crc_length == SPI_CRC_LENGTH_32BIT)))
     {
+      /* Set SPI_CR1_CRC33_17 bit */
       SET_BIT(hspi->Instance->CR1, SPI_CR1_CRC33_17);
+      /* Write CRC polynomial in SPI Register */
+      WRITE_REG(hspi->Instance->CRCPOLY, hspi->Init.CRCPolynomial);
     }
     else
     {
+      /* Clear SPI_CR1_CRC33_17 bit */
       CLEAR_BIT(hspi->Instance->CR1, SPI_CR1_CRC33_17);
-    }
 
-    /* Write CRC polynomial in SPI Register */
-    WRITE_REG(hspi->Instance->CRCPOLY, hspi->Init.CRCPolynomial);
+      /* Write CRC polynomial and set MSB bit at 1 in SPI Register */
+      /* Set MSB is mandatory for a correct CRC computation        */
+      crc_poly_msb_mask = (0x1UL << ((crc_length >> SPI_CFG1_CRCSIZE_Pos) + 0x1U));
+      WRITE_REG(hspi->Instance->CRCPOLY, (hspi->Init.CRCPolynomial) | crc_poly_msb_mask);
+    }
   }
 #endif /* USE_SPI_CRC */
 
