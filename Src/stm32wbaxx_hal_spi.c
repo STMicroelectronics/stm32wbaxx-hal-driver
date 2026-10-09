@@ -2212,9 +2212,13 @@ HAL_StatusTypeDef HAL_SPI_TransmitReceive_DMA(SPI_HandleTypeDef *hspi, const uin
   CLEAR_BIT(hspi->Instance->CFG1, SPI_CFG1_TXDMAEN | SPI_CFG1_RXDMAEN);
 
   /* Packing mode management is enabled by the DMA settings */
-  if (((hspi->Init.DataSize > SPI_DATASIZE_16BIT) && (hspi->hdmarx->Init.DestDataWidth != DMA_DEST_DATAWIDTH_WORD) && \
+  if (((hspi->Init.DataSize > SPI_DATASIZE_16BIT) && \
+       ((hspi->hdmarx->Init.DestDataWidth != DMA_DEST_DATAWIDTH_WORD) || \
+        (hspi->hdmatx->Init.SrcDataWidth != DMA_SRC_DATAWIDTH_WORD)) && \
        (IS_SPI_FULL_INSTANCE(hspi->Instance))) || \
-      ((hspi->Init.DataSize > SPI_DATASIZE_8BIT)  && (hspi->hdmarx->Init.DestDataWidth == DMA_DEST_DATAWIDTH_BYTE)))
+      ((hspi->Init.DataSize > SPI_DATASIZE_8BIT) && \
+       ((hspi->hdmarx->Init.DestDataWidth == DMA_DEST_DATAWIDTH_BYTE) || \
+        (hspi->hdmatx->Init.SrcDataWidth == DMA_SRC_DATAWIDTH_BYTE))))
   {
     /* Restriction the DMA data received is not allowed in this mode */
     /* Unlock the process */
